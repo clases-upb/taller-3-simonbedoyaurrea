@@ -21,6 +21,62 @@ public class App {
     * hay un error inesperado, deberá mostrar
     * el mensaje: "Ocurrió un error inesperado".
     */
+  public static String Escribir_asc(int nro1, int nro2, int nro3){
+      try {
+        String txt_retornar="";
+        int nro_mayor=0;
+        int nro_medio=0;
+        int nro_menor=0;
+
+        if(nro1==nro2 || nro1==nro3 || nro2==nro3){
+          return "Error: La función no considera números iguales";
+        }
+        if(nro1>nro2 && nro1>nro3){
+          if(nro2>nro3){
+          nro_mayor=nro1;
+          nro_medio=nro2;
+          nro_menor=nro3;
+          }
+          else if(nro3>nro2){
+            nro_mayor=nro1;
+            nro_medio=nro3;
+            nro_menor=nro2;
+            
+          }
+        }
+        else if(nro2>nro3 && nro2>nro1){
+          if(nro1>nro3){
+          nro_mayor=nro2;
+          nro_medio=nro1;
+          nro_menor=nro3;
+          }
+          else if(nro3>nro1){
+            nro_mayor=nro2;
+            nro_medio=nro3;
+            nro_menor=nro1;
+          }
+        }
+        else if(nro3>nro2 && nro3>nro1){
+          if(nro2>nro1){
+          nro_mayor=nro3;
+          nro_medio=nro2;
+          nro_menor=nro1;
+          }
+          else if(nro1>nro2){
+            nro_mayor=nro3;
+            nro_medio=nro1;
+            nro_menor=nro2;
+
+          }
+        }
+
+        txt_retornar=nro_mayor+" - "+nro_medio+" - "+nro_menor;
+
+        return txt_retornar;
+      }
+      catch (Exception e) {
+        return "Ocurrió un error inesperado";
+      }
 
 
 
@@ -32,7 +88,40 @@ public class App {
     * no está en el rango devuelve 0. Y si hay un error inesperado, devuelve -1.
     * 
     */
+    public static byte Obtener_cifras(int numero){
+        try {
+           int numero_min =0;
+           int numero_max=50000;
+           int diez=10;
+           int cien=100;
+           int mil=1000;
+           int diez_mil=10000;
 
+           if (numero >= numero_min && numero <= numero_max ){
+              if(numero<diez){
+                 return 1;
+              }
+              else if (numero >=diez && numero<cien){
+                 return 2;
+              }
+              else if (numero >= cien && numero<mil){
+                 return 3;
+              }
+              else if (numero >=mil && numero < diez_mil){
+                 return 4;
+              }
+              else{
+                 return 5;
+              }
+
+           }
+           else{
+              return 0;
+           }
+        } catch (Exception e) {
+          return -1;
+        }
+      }
 
 
    /*
@@ -48,7 +137,28 @@ public class App {
     * "Ocurrió un error inesperado".
     * 
     */
+    public static String Clasificar_char(char caracter){
+          try {
+              int caracter_ascii=(int)caracter;
+              String txt_retornar="";
 
+              if((caracter_ascii>=65 && caracter_ascii<=90)||(caracter_ascii>=97 && caracter_ascii<=122)){
+                  txt_retornar= "ES LETRA";
+              }
+              else if(caracter_ascii>=48 && caracter_ascii<=57){
+                  txt_retornar= "ES NUMERO";
+              }else if((caracter_ascii>=33 && caracter_ascii<=47) || (caracter_ascii>=58 && caracter_ascii<=64)||(caracter_ascii>=123 && caracter_ascii<=126)){
+                  txt_retornar= "ESPECIAL";
+              }
+
+              return txt_retornar;
+          }
+          catch (Exception e) {
+              return "Ocurrió un error inesperado";
+          }
+
+
+      }
 
 
    /*
@@ -69,7 +179,26 @@ public class App {
     * 
     * 
     */
-
+   public static String Hallar_division_exacta(int nro1, int nro2){
+          try {
+              String txt_retornar="";
+              
+             if(nro1<=0 || nro2<=0){
+                 return "NO SE ADMITE CERO O NEGATIVOS";
+             }
+              
+             if(nro1%nro2==0){
+                 txt_retornar="DIVISION EXACTA";
+             }
+             else{
+                 txt_retornar="DIVISION NO EXACTA";
+             }
+              return txt_retornar;
+          }
+          catch (Exception e) {
+              return "Ocurrió un error inesperado";
+          }
+      }
    
 
    /*
@@ -97,7 +226,34 @@ public class App {
     * "Ocurrió un error inesperado".
     */
 
-
+   public static String Consultar_hab(byte camas, String tipo_hab){
+          try {
+              String txt_retornar="";
+                if(camas<1 || camas>3 || (!tipo_hab.equals("VE") && !tipo_hab.equals("AA"))){
+                    return "DATOS NO VÁLIDOS";
+                }
+                    
+              if(camas==1 && tipo_hab=="VE"){
+                  txt_retornar= "102";
+              }
+              else if(camas==2){
+                  if(tipo_hab=="AA"){
+                      txt_retornar="101|301";
+                  }else{
+                      txt_retornar="202";
+                  }
+              }
+              else if(camas==3){
+                  txt_retornar="201";
+              }
+              
+              return txt_retornar;
+              
+              }
+              catch (Exception e) {
+                  return "Ocurrió un error inesperado";
+              }
+      }
    
    /*
     * 
@@ -113,6 +269,30 @@ public class App {
     * Si hay un error inesperado, deberá mostrar el mensaje:
     * "Ocurrió un error inesperado".
     */
+
+   public static String Obtener_obs(boolean plato1, boolean plato2, boolean plato3){
+          try {
+              String txt_retornar="";
+              
+               if(plato1==false && plato2==false && plato3==false){
+                   return "PLATOS NO VÁLIDOS";
+               }
+
+              if(plato1==true && plato2==true && plato3==true){
+                  txt_retornar="BEBIDA Y POSTRE";
+              }else if(plato1==true && plato2==true){
+                  txt_retornar="BEBIDA";
+              }else if(plato1==true){
+                  txt_retornar="POSTRE";
+              }
+                
+            return txt_retornar;
+              
+            }
+            catch (Exception e) {
+                return "Ocurrió un error inesperado";
+            }
+      }
 
 
 
@@ -141,4 +321,50 @@ public class App {
     * "Ocurrió un error inesperado".
     * 
     */
+    public static String Conocer_invitacion(String color){
+        try {
+            String txt_retornar="";
+           switch (color.toLowerCase()) {
+              case "verde":
+                 txt_retornar="Invita a las cervezas";
+                 break;
+
+              case "azul":
+                     txt_retornar="Invita a la pizza";
+
+                 break;
+
+              case "rojo":
+                     txt_retornar= "Invita al postre";
+
+                 break;
+
+              case "amarillo":
+                     txt_retornar= "Paga el parqueadero de todos";
+
+                 break;
+
+              case "blanco":
+                     txt_retornar= "Vaya y disfrute";
+
+                 break;
+
+              case "negro":
+                     txt_retornar= "Vaya y disfrute";
+
+                 break;
+
+              default:
+                 return "Error en el color";
+           }
+            return txt_retornar;
+
+        }
+        catch (Exception e) {
+           return "Ocurrió un error inesperado";
+        }
+
+      }
+
+}
 
